@@ -1,11 +1,11 @@
-import * as mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
 export class MongoClient {
     uri: string = process.env.mongo_uri || ''
     private connect: typeof mongoose | undefined
     static ChatSchema = {
-        chatId: { type: String, index: { unique: true } },
-        userId: String,
+        chatId: { type: Number, index: { unique: true } },
+        userId: Number,
     }
     chats: typeof mongoose.Model | undefined
     async init() {

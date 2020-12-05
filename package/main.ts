@@ -13,12 +13,9 @@ export async function main() {
         App.getInstance().setMongo(await (new MongoClient().init()))
         App.getInstance().setTg(await (new TelegramClient().init()))
         let tg = App.getInstance().getTg()
-        if (!tg)
-            throw new CustomError('ERROR', 'tg is undefined')
-        tg?.onText(/.+/, async (msg, match) => {
+        tg.onText(/.+/, async (msg, match) => {
             let { chat } = msg; match;
-            // await bot.setChatDescription(chat.id, 'desc for mass chats')
-            let msgSended = await tg?.sendMessage(chat.id, `qqwe : ${Date.now()}`);
+            let msgSended = await tg.sendMessage(chat.id, `qqwe : ${Date.now()}`);
             return
         })
 

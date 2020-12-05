@@ -4,9 +4,9 @@ export declare class App {
     private _mongo;
     private _tg;
     setMongo(m: MongoClient): this;
-    getMongo(): MongoClient | undefined;
+    getMongo(): MongoClient;
     setTg(t: TelegramClient): this;
-    getTg(): TelegramClient | undefined;
+    getTg(): TelegramClient;
     private static instance;
     private constructor();
     static getInstance(): App;

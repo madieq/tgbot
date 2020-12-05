@@ -14,13 +14,10 @@ async function main() {
         App_1.App.getInstance().setMongo(await (new mongo_1.MongoClient().init()));
         App_1.App.getInstance().setTg(await (new tg_1.TelegramClient().init()));
         let tg = App_1.App.getInstance().getTg();
-        if (!tg)
-            throw new error_1.CustomError('ERROR', 'tg is undefined');
-        tg?.onText(/.+/, async (msg, match) => {
+        tg.onText(/.+/, async (msg, match) => {
             let { chat } = msg;
             match;
-            // await bot.setChatDescription(chat.id, 'desc for mass chats')
-            let msgSended = await tg?.sendMessage(chat.id, `qqwe : ${Date.now()}`);
+            let msgSended = await tg.sendMessage(chat.id, `qqwe : ${Date.now()}`);
             return;
         });
         log_1.Logger.log('-- app started --');

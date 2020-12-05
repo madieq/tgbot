@@ -3,6 +3,11 @@ import { CustomError } from './error';
 
 export class TelegramClient {
     private bot: TelegramBot | undefined;
+    getBot(): TelegramBot {
+        if (!this.bot)
+            throw new CustomError('ERROR', 'bot is undefined')
+        return this.bot
+    }
     async init() {
         this.bot = new TelegramBot(process.env.tg_token || '', { polling: true })
         return this
